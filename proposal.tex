@@ -1,0 +1,77 @@
+\documentclass{scrartcl}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{color}
+
+\title{Improving drive-by download detection: boot. visit$^n$. kill. repeat.}
+%\subtitle{}
+\author{
+  Adriaan Dens\\
+   \texttt{adriaan.dens@os3.nl}
+  \and
+  Martijn Bogaard\\
+   \texttt{martijn.bogaard@os3.nl}
+}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{Introduction}
+
+\section{Research Question}
+
+\textit{Is it possible to concurrently visit multiple URLs in one virtual machine and still be able to determine which URL was responsible for a malicious advertisement?}
+\\
+\section{Related work}
+\section{Scope}
+
+	Cuckoo aangepast hebben met de volgende features
+		- Multiple URL support
+		- HTTPS decryption
+		- meerdere url's in één VM steken en toch alles kunnen tracken van waar iets kwam
+
+
+ - Enkel met IE laten werken of supporten we ook andere browsers?
+	(python submit.py --url example.org --browser chrome ?????)
+ - Enkel in Virtualbox laten werken of overal
+
+
+\section{Approach and methods}
+
+uitleggen van hoe we die concurrency gaan doen
+
+gebruik maken van wat al bestaat: Cuckoo
+open source op github
+
+
+\section{Requirements}
+
+we gebruiken Cuckoo
+	- dependencies van cuckoo
+	- woordje over Python ofzo?
+	- virtualized environments
+Windows machines zijn dus ook nodig
+
+
+\section{Planning}
+
+elke woensdag (wss) naar den haag in de namiddag voor meeting
+eerste week tegen woensdag proposal af en hoe we die concurrency gaan oplossen
+ 
+
+\section{Expected results}
+	Run top 100 NL websites elk halfuur?
+	Cuckoo aangepast hebben met de volgende features
+		- Multiple URL support
+		- HTTPS decryption
+		- meerdere url's in één VM steken en toch alles kunnen tracken van waar iets kwam
+
+\section{Ethical issues}
+	we werken niet met persoonlijke data dus geen ethical issues...
+
+\bibliographystyle{ieeetr}
+\bibliography{proposal}
+
+\end{document}

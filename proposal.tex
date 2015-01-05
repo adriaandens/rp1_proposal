@@ -24,7 +24,9 @@
 
 \section{Research Question}
 
-\textit{Is it possible to concurrently visit multiple URLs in one virtual machine and still be able to determine which URL was responsible for a malicious advertisement?}
+\textit{How can we do massive malware scanning in a timely fashion?}
+
+\textit{How can we concurrently visit multiple URLs in one virtual machine and still be able to determine which URL was responsible for a malicious advertisement?}
 \\
 \section{Related work}
 
@@ -55,28 +57,54 @@ open source op github
 
 \section{Requirements}
 
-we gebruiken Cuckoo
-	- dependencies van cuckoo
-	- woordje over Python ofzo?
-	- virtualized environments
-Windows machines zijn dus ook nodig
-
+As we will use and change Cuckoo, we require the Cuckoo source code as well as all dependencies needed by Cuckoo. Furthermore, a virtualized environment such as Virtualbox is needed with a Microsoft Windows virtual machine. Internet Explorer 8 will be considered as the minimum version of the browser that we use.
 
 \section{Planning}
+
+\begin{table}
+\centering
+\begin{tabular}{ | l | l |}
+\hline
+Week & Topic \\ \hline
+1 & Writing proposal \\
+1 & Wednesday: meeting with supervisors \\
+1 & Figuring out how to do concurrent URL analysis \\
+\hline
+\end{tabular}
+\caption{Amazing table}
+\label{tbl-planning}
+\end{table}
 
 elke woensdag (wss) naar den haag in de namiddag voor meeting
 eerste week tegen woensdag proposal af en hoe we die concurrency gaan oplossen
  
 
 \section{Expected results}
-	Run top 100 NL websites elk halfuur?
-	Cuckoo aangepast hebben met de volgende features
-		- Multiple URL support
-		- HTTPS decryption
-		- meerdere url's in één VM steken en toch alles kunnen tracken van waar iets kwam
+
+%To implement our research in a proof of concept, we will be changing the Cuckoo source code with the following additions:
+To implement our research in a proof of concept, we will be changing the Cuckoo source code to be able to track multiple URLs in one virtual machine. First, multiple URL support should be added to allow multiple URLs in the virtual environment. Secondly, we will have to implement the algorithm to track the changes that are the result of browsing to an URL. Finally, we will implement a man-in-the-middle to be able to view the contents of encrypted SSL/TLS tunnels.\\
+
+We also want to drastically speed up Cuckoo to make it more useable for checking thousands of URLs. Our goal is to increase the performance tenfold.
+
+%\begin{itemize}
+%\item Multiple URL support
+%\item HTTPS decryption
+%\item 
+%\end{itemize}
+%
+%	Run top 100 NL websites in een kwartier?
+%	10x sneller
+%
+%	Cuckoo aangepast hebben met de volgende features
+%		- Multiple URL support
+%		- HTTPS decryption
+%		- 
+%		- meerdere url's in één VM steken en toch alles kunnen tracken van waar iets kwam
 
 \section{Ethical issues}
+
 	we werken niet met persoonlijke data dus geen ethical issues...
+	we werken wel met malware dus moeten we zien dat die niet verspreidt wordt
 
 \bibliographystyle{ieeetr}
 \bibliography{proposal}

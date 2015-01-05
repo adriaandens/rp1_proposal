@@ -20,11 +20,11 @@
 
 \section{Introduction}
 
-In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivaling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal website, for example because the website was hacked and infected. 
+In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivaling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal day-to-day website because, for example, the website got hacked and infected. 
 
 Several major websites in the Netherlands have been hacked in the past and started to serve malware as a consequence. While this was usually detected in a matter of hours, this still resulted in thousands of infections.
 
-In many cases, it was not the actual website but one of the advertisement networks that was hacked or infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code.
+In many cases, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code.
 
 %In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
@@ -38,7 +38,7 @@ At the request of the National Cyber Security Center (NCSC), this research proje
 
 \section{Related work}
 
-Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented\cite{auto_malware} in the literature\cite{}. Cuckoo is one of the most popular dynamic analysis systems and used by Virustotal and Malwr. The malware runs in a virtual machine and its behaviour is analysed.
+Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal and Malwr. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
 
 The predecessor of NCSC started in 2007 with the development of their own system (Honeyspider network) for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
 
@@ -48,9 +48,9 @@ In 2011, the development was started of the second generation of this platform. 
 
 Inside the scope of this project is figuring out and implementing an algorithm to concurrently run multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer.
 
-\section{Requirements}
+%\section{Requirements}
 
-As we will use and change Cuckoo, we require the Cuckoo source code as well as all dependencies needed by Cuckoo. Furthermore, a virtualized environment such as Virtualbox is needed with a Microsoft Windows virtual machine. Internet Explorer 8 will be considered as the minimum version of the browser that we use.
+%As we will use and change Cuckoo, we require the Cuckoo source code as well as all dependencies needed by Cuckoo. Furthermore, a virtualized environment such as Virtualbox is needed with a Microsoft Windows virtual machine. Internet Explorer 8 will be considered as the minimum version of the browser that we use.
 
 \section{Planning}
 
@@ -64,7 +64,7 @@ We also want to drastically speed up Cuckoo to make it more useable for checking
 
 \section{Ethical issues}
 
-Our research contains no major ethical issues as it does not include working with personally identifiable information. Malware, if any, will be runned in a controlled virtual environment. Afterwards , the virtual machine will be destroyed.
+Our research contains no major ethical issues as it does not include working with personally identifiable information. Malware, if any, will be run in a controlled virtual environment. Afterwards , the virtual machine will be destroyed.
 
 \bibliographystyle{ieeetr}
 \bibliography{proposal}

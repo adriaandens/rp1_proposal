@@ -26,7 +26,7 @@ Several major websites in the Netherlands have been hacked in the past and start
 
 In many of the cases where one of the bigger national websites have been involved was not the actual website but one of the advertisement networks that are used by such websites hacked or infiltrated by hiding in an innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
-National CERT organisations like the department of NCSC have a growing interest in an early detection of such treats. While automated systems to scan websites exist already for many years is one of the main difficulties the time needed to analyse a single website and the maintenance needed to keep it up-to-date for the latest treats. On request of NCSC will this research project focus on the question how it would be possible to dramaticly improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as source of the infection.
+National CERT organisations like the department of the National Cyber Security Centre (NCSC) of the Netherlands have a growing interest in an early detection of such threats. While automated systems to scan websites exist already for many years is one of the main difficulties the time needed to analyse a single website and the maintenance needed to keep it up-to-date for the latest threats. On request of NCSC will this research project focus on the question how it would be possible to dramaticly improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as source of the infection.
 
 \section{Research Question}
 
@@ -41,9 +41,11 @@ National CERT organisations like the department of NCSC have a growing interest 
 
 \section{Related work}
 
+Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented\cite{http://dl.acm.org.proxy.uba.uva.nl:2048/citation.cfm?doid=2089125.2089126} in the literature\cite{}. Cuckoo is one of the most popular dynamic analysis systems and used by for example Virustotal and Malwr. The malware runs in a virtual machine and it's behaviour is analysed.
 
+The predecessor of NCSC started in 2007 with the development of their own system (Honeyspider network) for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system was that it requires a lot of maintenance and started to become outdated.
 
-Honeyspider 1 en 2
+In 2011 was the development started of the second generation of this platform. This time was decided to develop it as part of a joint venture between NASK/CERT Polska (Poland) and NCSC. This system is build around existing solutions like Cuckoo.
 
 \section{Scope}
 

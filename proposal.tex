@@ -22,31 +22,43 @@
 
 In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivalling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal day-to-day website because, for example, the website got hacked and infected. 
 
-Several major websites in the Netherlands have been hacked in the past and started to serve malware as a consequence. While this was usually detected in a matter of hours, this still resulted in thousands of infections.
-
+% TODO Sources
 In many cases, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code.
 
 %In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
-National CERT organisations have a growing interest in an early detection of such threats. While automated systems to scan websites already exist, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep it up-to-date for the latest threats.
+National CERT organisations have a growing interest in an early detection of such threats. While automated systems to scan websites already exist, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
 
 \section{Research Question}
-At the request of the National Cyber Security Center (NCSC), this research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
+In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), this research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
 
-\textit{How can we concurrently visit multiple URLs in one virtual machine and still be able to determine which URL was responsible for a malicious advertisement?}
+\textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}
 %\textit{How can we do massive malware scanning in a timely fashion?}
 
 \section{Related work}
 
+% google scholar, dude van os3 uit 2011 paper, 
+% Wat is cuckoo
+% Waarom is cuckoo relevant aan ons onderzoek
+% References naar virustotal en malwr
 Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal and Malwr. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
 
-The predecessor of NCSC started in 2007 with the development of their own system (Honeyspider network) for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
+% Source Honey spider
+The predecessor of NCSC-NL started in 2007 with the development of their own system (Honeyspider network) for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
 
-In 2011, the development was started of the second generation of this platform. This time, it was decided to develop the platform as part of a joint venture between NASK/CERT Polska (Poland) and NCSC. This system is build around existing solutions like Cuckoo.
+% Boeit niet
+In 2011, the development was started of the second generation of this platform. This time, it was decided to develop the platform as part of a joint venture between NASK/CERT Polska (Poland) and NCSC-NL. This system is build around existing solutions like Cuckoo.
 
 \section{Scope}
 
-Inside the scope of this project is figuring out and implementing an algorithm to concurrently run multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
+Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
+
+% focus op het algoritme, probeer een kleine schets te geven van hoe jullie bijv naar kunnen kijken
+
+% Approach
+%To implement our research in a proof of concept, we will be changing the Cuckoo source code to be able to track multiple URLs in one virtual machine. First, multiple URL support should be added to allow multiple URLs in the virtual environment. Secondly, we will have to implement the algorithm to track the changes that are the result of browsing to an URL. Finally, we will implement a man-in-the-middle to be able to view the contents of encrypted SSL/TLS tunnels.\\
+% monitoren van api calls ipv netwerklayer stuff, cuckoo is hier handig voor daarom gebruiken we wss cuckoo voor PoC
+% Cuckoo heeft ook al een hook systeem voor system calls
 
 %\section{Requirements}
 
@@ -58,8 +70,9 @@ A meeting with the supervisors is planned every Wednesday afternoon. Therefore i
 
 \section{Expected results}
 
-To implement our research in a proof of concept, we will be changing the Cuckoo source code to be able to track multiple URLs in one virtual machine. First, multiple URL support should be added to allow multiple URLs in the virtual environment. Secondly, we will have to implement the algorithm to track the changes that are the result of browsing to an URL. Finally, we will implement a man-in-the-middle to be able to view the contents of encrypted SSL/TLS tunnels.\\
+% devising an algorithm blablabla
 
+% PoC
 We also want to drastically speed up Cuckoo to make it more useable for checking thousands of URLs. Our goal is to increase the performance tenfold.
 
 \section{Ethical issues}
@@ -68,5 +81,7 @@ Our research contains no major ethical issues as it does not include working wit
 
 \bibliographystyle{ieeetr}
 \bibliography{proposal}
+
+% veel meer references: 8 to be exact
 
 \end{document}

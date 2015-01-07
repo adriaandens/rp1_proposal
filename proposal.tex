@@ -23,17 +23,20 @@
 In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivalling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal day-to-day website because, for example, the website got hacked and infected. 
 
 % TODO Sources
-In many cases, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code.
+In many cases \cite{proofpoint}, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code. This is also called malvertising.
 
 %In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
-National CERT organisations have a growing interest in an early detection of such threats. While automated systems to scan websites already exist, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
+National CERT organisations are of course interested in an early detection of such threats. While automated systems to scan websites already exist, like Cuckoo \cite{cuckoo}, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
 
 \section{Research Question}
 In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), this research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
 
-\textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}
-%\textit{How can we do massive malware scanning in a timely fashion?}
+\textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}\\
+ 
+\begin{itemize}
+\item How do browsers implement and expose (API) opening URLs?
+\end{itemize}
 
 \section{Related work}
 
@@ -41,17 +44,20 @@ In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), this 
 % Wat is cuckoo
 % Waarom is cuckoo relevant aan ons onderzoek
 % References naar virustotal en malwr
-Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal and Malwr. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
+Most existing systems for malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal \cite{virustotal} and Malwr \cite{malwr}. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
 
 % Source Honey spider
-The predecessor of NCSC-NL started in 2007 with the development of their own system (Honeyspider network) for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
+The predecessor of NCSC-NL started in 2007 with the development of their own system, namely the Honeyspider network \cite{honeyspider}, for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
 
 % Boeit niet
 In 2011, the development was started of the second generation of this platform. This time, it was decided to develop the platform as part of a joint venture between NASK/CERT Polska (Poland) and NCSC-NL. This system is build around existing solutions like Cuckoo.
 
 \section{Scope}
 
-Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
+The scope of this project consists of creating an algorithm that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as extra HTTP requests, and link them to the original request/URL. To proof that the algorithm is something feasible, we will also implement a proof of concept that implements the algorithm.
+
+
+%Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
 
 % focus op het algoritme, probeer een kleine schets te geven van hoe jullie bijv naar kunnen kijken
 
@@ -70,10 +76,7 @@ A meeting with the supervisors is planned every Wednesday afternoon. Therefore i
 
 \section{Expected results}
 
-% devising an algorithm blablabla
-
-% PoC
-We also want to drastically speed up Cuckoo to make it more useable for checking thousands of URLs. Our goal is to increase the performance tenfold.
+At the end of the project we expect to have an algorithm that answers the research question and a proof of concept of this algorithm. This PoC will be implemented by adapting the Cuckoo Sandbox. By checking multiple URLs in one virtual machine instance, we want to make Cuckoo more useable for checking hundreds of URLs. Our goal is to increase the performance of Cuckoo tenfold by implementing our algorithm.
 
 \section{Ethical issues}
 

@@ -82,7 +82,7 @@ To create a generic algorithm, we need to have more information than the data we
 
 Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data send and received on the network.
 
-Thirdly, we can define a generic algorithm that allows us to trace activity to a certain URL. Once we have this generic algorithm, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo \cite{cuckoo}
+Thirdly, we can define a generic algorithm that allows us to trace activity to a certain URL. Once we have this generic algorithm, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo \footnote{http://cuckoosandbox.org} which is dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
 %- algo maken die generiek is
 
 

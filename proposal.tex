@@ -27,7 +27,7 @@
 In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivalling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal day-to-day website because, for example, the website got hacked and infected. 
 
 % TODO Sources
-In many cases\footnote{http://www.proofpoint.com/threatinsight/posts/malware-in-ad-networks-infects-visitors-and-jeopardizes-brands.php}\footnote{http://blog.fox-it.com/2013/08/01/analysis-of-malicious-advertisements-on-telegraaf-nl}\footnote{http://blog.fox-it.com/2014/01/03/malicious-advertisements-served-via-yahoo}, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code. This is also called malvertising \cite{Li2012}.
+In many cases\footnote{http://www.proofpoint.com/threatinsight/posts/malware-in-ad-networks-infects-visitors-and-jeopardizes-brands.php} \footnote{http://blog.fox-it.com/2013/08/01/analysis-of-malicious-advertisements-on-telegraaf-nl} \footnote{http://blog.fox-it.com/2014/01/03/malicious-advertisements-served-via-yahoo}, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code. This is also called malvertising \cite{Li2012}.
 
 %In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
@@ -38,34 +38,21 @@ In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), our r
 
 \textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}\\
 
-To answer the research question multiple subquestions have been formulated:
+To answer the research question, multiple subquestions have been formulated:
 \begin{itemize}
 \item Which techniques are used by browsers to make concurrently visiting multiple URLs possible?
-\item Which APIs are used by webbrowsers to make HTTP requests and retreive webpages?
-\item How can we link a HTTP request to its source URL without the modification of the used webbrowser?
+\item Which APIs are used by web browsers to make HTTP requests and retrieve webpages?
+\item How can we link a HTTP request to its source URL without the modification of the used web browser?
 \end{itemize}
 
 \section{Related work}
 The growing importance and economic losses of malware resulted in many research projects in the last years. The detection and analysis of malware has been researched from several different angles and resulted in many proposed static and dynamic analysis techniques.
 
-Le et al. \cite{Le2013} presented in 2013 a framework that describes the common stages and characteristics of a drive-by download attack. They described four stages from placing the malicious content on a webpage until execution of the malicious activity.
+In 2013, Le et al. \cite{Le2013} presented a framework that describes the common stages and characteristics of a drive-by download attack. They described four stages from placing the malicious content on a webpage until the execution of the malicious activity.
 
-In 2011 was in a paper \cite{Canali2011} by Canali et al. the problematic performance of dynamic analysis stated and a solution proposed in the form of ``Prophiler''. Prophiler is an filter that deploys static analysis techniques and that is able to reduce the load with more than 85\% compared to dynamic analysis with an comparable amount of false negatives.
+In 2011, a paper from Canali et al. \cite{Canali2011} was released about the problematic performance of dynamic analysis and with a solution proposed in the form of ``Prophiler''. Prophiler is a filter that deploys static analysis techniques and that is able to reduce the load with more than 85\% compared to dynamic analysis. This with a comparable amount of false negatives.
 
-In the same year gave Rajab et al. \cite{Rajab11trendsin} an overview of the trends regarding Web-Malware detection and how the malware tries to circumvent the detection. In this research was focussed on the advantages and disadvantages of four techniques (Virtual Machine honeypots, Browser Emulation honey- pots, Classification based on Domain Reputation, and Anti-Virus Engines). 
-
-% google scholar, dude van os3 uit 2011 paper, 
-% Wat is cuckoo
-% Waarom is cuckoo relevant aan ons onderzoek
-% References naar virustotal en malwr
-
-%Most existing systems for dynamic malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal \cite{virustotal} and Malwr \cite{malwr}. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
-
-% Source Honey spider
-%The predecessor of NCSC-NL started in 2007 with the development of their own system, namely the Honeyspider network \cite{honeyspider}, for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
-
-% Boeit niet
-%In 2011, the development was started of the second generation of this platform. This time, it was decided to develop the platform as part of a joint venture between NASK/CERT Polska (Poland) and NCSC-NL. This system is build around existing solutions like Cuckoo.
+In the same year Rajab et al. \cite{Rajab11trendsin} gave an overview of the trends regarding web malware detection and how the malware tries to circumvent the detection. This research focused on the advantages and disadvantages of four techniques: Virtual Machine honeypots, Browser Emulation honeypots, Classification based on Domain Reputation and Anti-Virus Engines.
 
 \section{Scope}
 

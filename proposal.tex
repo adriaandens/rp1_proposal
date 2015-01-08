@@ -27,15 +27,21 @@ In many cases \cite{proofpoint}, it was not the actual website but one of the ad
 
 %In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
-National CERT organisations are of course interested in an early detection of such threats. While automated systems to scan websites already exist, like Cuckoo \cite{cuckoo}, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
+National CERT organisations are (of course) interested in an early detection of such threats. While automated systems to scan websites already exist, like Cuckoo \cite{cuckoo} and Anubis \cite{http://anubis.iseclab.org/}, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
 
 \section{Research Question}
-In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), this research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
+In cooperation with of the Dutch National Cyber Security Center (NCSC-NL), our research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
 
 \textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}\\
+
+To answer the research question multiple subquestions have been formulated:
  
 \begin{itemize}
-\item How do browsers implement and expose (API) opening URLs?
+
+\item Which techniques are used by browsers to make concurrently visiting multiple URLs possible?
+\item Which APIs are used by webbrowsers to make HTTP requests and retreive webpages?
+\item How can we link a HTTP request to its source URL without the modification of the used webbrowser?
+
 \end{itemize}
 
 \section{Related work}
@@ -54,12 +60,19 @@ In 2011, the development was started of the second generation of this platform. 
 
 \section{Scope}
 
-The scope of this project consists of creating an algorithm that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as extra HTTP requests, and link them to the original request/URL. To proof that the algorithm is something feasible, we will also implement a proof of concept that implements the algorithm.
+The scope of this project consists of creating an algorithm that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To proof that the algorithm is something feasible, we will try to also implement a proof of concept of the algorithm.
 
+The goal during this research project is to make the algorithm platform agnostic. When this is not possible and during the development of the PoC we will focus on Windows 7 with version 8 of the Internet Explorer browser. This is at the time of writing one of the most used combinations in business in the Netherlands.
+
+The detection and identification of malicious behaviour is not part of this project. For our PoC we will stick to the detection of a well-known older and still to be determined malware family which existance is easy to detect on the system. 
 
 %Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
 
 % focus op het algoritme, probeer een kleine schets te geven van hoe jullie bijv naar kunnen kijken
+
+\section{Approach}
+
+
 
 % Approach
 %To implement our research in a proof of concept, we will be changing the Cuckoo source code to be able to track multiple URLs in one virtual machine. First, multiple URL support should be added to allow multiple URLs in the virtual environment. Secondly, we will have to implement the algorithm to track the changes that are the result of browsing to an URL. Finally, we will implement a man-in-the-middle to be able to view the contents of encrypted SSL/TLS tunnels.\\

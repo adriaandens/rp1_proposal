@@ -31,15 +31,12 @@ textheight=660pt
 
 In the digital world of today, malware is still a massive and growing problem. While back in the day it was used to annoy users and system administrators, nowadays it's used for extortion, cyber espionage and surveillance by criminal groups and rivalling governments. One of the main risk factors to get infected with malware is a drive-by download while visiting a normal day-to-day website because, for example, the website got hacked and infected. 
 
-% TODO Sources
 In many cases\footnote{http://www.proofpoint.com/threatinsight/posts/malware-in-ad-networks-infects-visitors-and-jeopardizes-brands.php} \footnote{http://blog.fox-it.com/2013/08/01/analysis-of-malicious-advertisements-on-telegraaf-nl} \footnote{http://blog.fox-it.com/2014/01/03/malicious-advertisements-served-via-yahoo}, it was not the actual website but one of the advertisement networks that was infiltrated and which subsequently started serving malicious code hidden in innocently looking advertisement code. This is also called malvertising \cite{Li2012}.
-
-%In many of the cases where one of the bigger national websites was involved, it was not the actual website but one of the advertisement networks that are used by such websites that was hacked or infiltrated by hiding in innocent looking advertisement malicious code. Such advertisements can then be served on many different websites.
 
 National CERT organisations are (of course) interested in an early detection of such threats. While automated systems to scan websites already exist, like Cuckoo\footnote{http://cuckoosandbox.org} and Anubis\footnote{http://anubis.iseclab.org}, one of the main difficulties is the time needed to analyse a single website and the maintenance needed to keep these systems up-to-date for the latest threats.
 
 \section{Research Question}
-In cooperation with the Dutch National Cyber Security Center (NCSC-NL), our research project will focus on the question:\\ %how it would be possible to dramatically improve the efficiency of scanning websites while maintaining the ability to pinpoint a single website as the source of an infection.
+In cooperation with the Dutch National Cyber Security Center (NCSC-NL), our research project will focus on the question:\\
 
 \textit{How can we concurrently visit multiple URLs and still be able to determine which URL was responsible for malicious activities?}\\
 \newpage
@@ -63,52 +60,21 @@ A different approach is taken by Rossow \textit{et al.} \cite{Rossow2011}, Cortj
 
 The predecessor of NCSC-NL started in 2007 with the development of their own system, namely the Honeyspider network \cite{honeyspider}, for the dynamic analysis of websites. This system crawled the biggest and most important websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
 
-% google scholar, dude van os3 uit 2011 paper, 
-% Wat is cuckoo
-% Waarom is cuckoo relevant aan ons onderzoek
-% References naar virustotal en malwr
-
-%Most existing systems for dynamic malware detection are passive or only able to scan a single website at a time. Several approaches for such systems are documented in the literature \cite{auto_malware}. Cuckoo \cite{cuckoo} is one of the most popular dynamic analysis systems and is used by Virustotal \cite{virustotal} and Malwr \cite{malwr}. Cuckoo executes the malware in a virtual machine and analyses its behaviour.
-
-% Source Honey spider
-%The predecessor of NCSC-NL started in 2007 with the development of their own system, namely the Honeyspider network \cite{honeyspider}, for the dynamic analysis of websites. This system crawled the top X websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
-
-% Boeit niet
-%In 2011, the development was started of the second generation of this platform. This time, it was decided to develop the platform as part of a joint venture between NASK/CERT Polska (Poland) and NCSC-NL. This system is build around existing solutions like Cuckoo.
-
 \section{Scope}
 
 The scope of this project consists of creating an algorithm that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To prove that the algorithm is something feasible, we will also implement a proof of concept of the algorithm.
 
 The goal during this research project is to make the algorithm platform agnostic. If this is not possible then we will limit our self to Windows 7 with version 8 of the Internet Explorer browser.
-%The goal during this research project is to make the algorithm platform agnostic. When it will not be possible to make the algorithm platform agnostic and also during the development of the PoC we will limit our self to Windows 7 with version 8 of the Internet Explorer browser. This is at the time of writing one of the most used combinations in companies in the Netherlands.
 
 The detection and identification of malicious behaviour is not part of this project. For our PoC we will stick to the detection of a well-known older and still to be determined malware family which existence is easy to detect on the system. 
-
-%Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
-
-% focus op het algoritme, probeer een kleine schets te geven van hoe jullie bijv naar kunnen kijken
 
 \section{Approach}
 
 To create a generic algorithm, we need to have more information than the data we see when passively sniffing the network. Only looking at the network traffic will most likely be not enough to trace malicious activity to a URL the client visited. Because we have access to the client's machine, we can retrieve extra information from the running system which allows us to give more context to the network traffic. What information is relevant has to be investigated. Firstly, we will look at how browsers work. More specifically, we look at the implementation of the tabs and the network stack of the most used browsers. How does a browser separate the content and calls from different tabs? Does the browser implement its own network stack or does it use the operating system's network stack? By answering these questions, we can better define a generic algorithm.
 
-Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data send and received on the network. 
+Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data sent and received on the network. It might be the case that network traffic can be intercepted before it leaves the actual NIC. This might be done on the application level or operating system level. Further investigation is necessary to see if this is feasible.
 
 Finally, we can define a generic algorithm that allows us to trace activity to a certain URL. Once we have this generic algorithm, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo which is dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
-%- algo maken die generiek is
-
-
-%- Implementing
-
-% Approach
-%To implement our research in a proof of concept, we will be changing the Cuckoo source code to be able to track multiple URLs in one virtual machine. First, multiple URL support should be added to allow multiple URLs in the virtual environment. Secondly, we will have to implement the algorithm to track the changes that are the result of browsing to an URL. Finally, we will implement a man-in-the-middle to be able to view the contents of encrypted SSL/TLS tunnels.\\
-% monitoren van api calls ipv netwerklayer stuff, cuckoo is hier handig voor daarom gebruiken we wss cuckoo voor PoC
-% Cuckoo heeft ook al een hook systeem voor system calls
-
-%\section{Requirements}
-
-%As we will use and change Cuckoo, we require the Cuckoo source code as well as all dependencies needed by Cuckoo. Furthermore, a virtualized environment such as Virtualbox is needed with a Microsoft Windows virtual machine. Internet Explorer 8 will be considered as the minimum version of the browser that we use.
 
 \section{Planning}
 
@@ -125,5 +91,4 @@ Our research contains no major ethical issues as it does not include working wit
 \bibliographystyle{ieeetr}
 \bibliography{proposal}
 
-% veel meer references: 8 to be exact
 \end{document}

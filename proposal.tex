@@ -59,7 +59,7 @@ In 2011, a paper from Canali et al. \cite{Canali2011} was released about the pro
 
 In the same year Rajab et al. \cite{Rajab11trendsin} gave an overview of the trends regarding web malware detection and how the malware tries to circumvent the detection. This research focused on the advantages and disadvantages of four techniques: Virtual Machine honeypots, Browser Emulation honeypots, Classification based on Domain Reputation and Anti-Virus Engines.
 
-A different approach is taken by Rossow \textit{et al.} \cite{Rossow2011}, Cortjens \textit{et al.} \cite{Cortjens2012} and Kinkhorst \textit{et al.} \cite{Kinkhorst2009}. They have focused during mutiple research projects on the ability to detect and identify malware on the network layer.
+A different approach is taken by Rossow \textit{et al.} \cite{Rossow2011}, Cortjens \textit{et al.} \cite{Cortjens2012} and Kinkhorst \textit{et al.} \cite{Kinkhorst2009}. They have focused during multiple research projects on the ability to detect and identify malware on the network layer.
 
 The predecessor of NCSC-NL started in 2007 with the development of their own system, namely the Honeyspider network \cite{honeyspider}, for the dynamic analysis of websites. This system crawled the biggest and most important websites of the Netherlands on a daily base. The downside of this system is that it requires a lot of maintenance and hence it started to become outdated.
 
@@ -83,7 +83,7 @@ The scope of this project consists of creating an algorithm that allows multiple
 The goal during this research project is to make the algorithm platform agnostic. If this is not possible then we will limit our self to Windows 7 with version 8 of the Internet Explorer browser.
 %The goal during this research project is to make the algorithm platform agnostic. When it will not be possible to make the algorithm platform agnostic and also during the development of the PoC we will limit our self to Windows 7 with version 8 of the Internet Explorer browser. This is at the time of writing one of the most used combinations in companies in the Netherlands.
 
-The detection and identification of malicious behaviour is not part of this project. For our PoC we will stick to the detection of a well-known older and still to be determined malware family which existance is easy to detect on the system. 
+The detection and identification of malicious behaviour is not part of this project. For our PoC we will stick to the detection of a well-known older and still to be determined malware family which existence is easy to detect on the system. 
 
 %Inside the scope of this project is figuring out and implementing an algorithm to concurrently visit multiple URLs in one virtual machine. Secondly, we will implement a man-in-the-middle to decrypt HTTPS traffic. Multiple browser support is not in the scope of this project, we will only implement our changes in the default Windows browser, Internet Explorer, as there is already some preliminary support for it in Cuckoo.
 
@@ -91,7 +91,7 @@ The detection and identification of malicious behaviour is not part of this proj
 
 \section{Approach}
 
-To create a generic algorithm, we need to have more information than the data we see when passively sniffing the network. Only looking at the network traffic will most likely be not enough to trace malicious activity to a URL the client visited. Because we have access to the client's machine, we can retrieve extra information from the running system which allows us to give more context to the network traffic. What information is relevant has to be investigated. Firstly, we will look at how browsers work. More specifically, we look at the implementation of the tabs and the network stack of the most used browsers. How does a browser seperate the content and calls from different tabs? Does the browser implement its own network stack or does it use the operating system's network stack? By answering these questions, we can better define a generic algorithm.
+To create a generic algorithm, we need to have more information than the data we see when passively sniffing the network. Only looking at the network traffic will most likely be not enough to trace malicious activity to a URL the client visited. Because we have access to the client's machine, we can retrieve extra information from the running system which allows us to give more context to the network traffic. What information is relevant has to be investigated. Firstly, we will look at how browsers work. More specifically, we look at the implementation of the tabs and the network stack of the most used browsers. How does a browser separate the content and calls from different tabs? Does the browser implement its own network stack or does it use the operating system's network stack? By answering these questions, we can better define a generic algorithm.
 
 Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data send and received on the network.
 

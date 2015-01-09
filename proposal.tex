@@ -63,27 +63,27 @@ The predecessor of NCSC-NL started in 2007 with the development of their own sys
 
 \section{Scope}
 
-The scope of this project consists of creating an algorithm that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To prove that the algorithm is something feasible, we will also implement a proof of concept of the algorithm.
+The scope of this project consists of creating a method that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To prove that the method is something feasible, we will, when enough time is available, implement a proof of concept of the method.
 
-The goal during this research project is to make the algorithm platform agnostic. If this is not possible then we will limit our self to Windows 7 with version 8 of the Internet Explorer browser.
+The goal during this research project is to make the method platform agnostic. If this is not possible then we will limit our self to Windows 7 with version 8 of the Internet Explorer browser.
 
 The detection and identification of malicious behaviour is not part of this project. For our PoC we will stick to the detection of a well-known older and still to be determined malware family which existence is easy to detect on the system. 
 
 \section{Approach}
 
-To create a generic algorithm, we need to have more information than the data we see when passively sniffing the network. Only looking at the network traffic will most likely be not enough to trace malicious activity to a URL the client visited. Because we have access to the client's machine, we can retrieve extra information from the running system which allows us to give more context to the network traffic. What information is relevant has to be investigated. Firstly, we will look at how browsers work. More specifically, we look at the implementation of the tabs and the network stack of the most used browsers. How does a browser separate the content and calls from different tabs? Does the browser implement its own network stack or does it use the operating system's network stack? By answering these questions, we can better define a generic algorithm.
+To create a generic method, we need to have more information than the data we see when passively sniffing the network. Only looking at the network traffic will most likely be not enough to trace malicious activity to a URL the client visited. Because we have access to the client's machine, we can retrieve extra information from the running system which allows us to give more context to the network traffic. What information is relevant has to be investigated. Firstly, we will look at how browsers work. More specifically, we look at the implementation of the tabs and the network stack of the most used browsers. How does a browser separate the content and calls from different tabs? Does the browser implement its own network stack or does it use the operating system's network stack? By answering these questions, we can better define a generic method.
 
 Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data sent and received on the network. It might be the case that network traffic can be intercepted before it leaves the actual NIC. This might be done on the application level or operating system level. Further investigation is necessary to see if this is feasible.
 
-Finally, we can define a generic algorithm that allows us to trace activity to a certain URL. Once we have this generic algorithm, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo which is a dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
+Finally, we can define a generic method that allows us to trace activity to a certain URL. Once we have this generic method and if there is still enough time left, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo which is a dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
 
 \section{Planning}
 
-A meeting with the supervisors is planned every Wednesday afternoon. Therefore in week 1, we set the deadline of the proposal on Wednesday so it can be reviewed by our supervisors and be changed accordingly to the feedback given. At the end of week 1 and the beginning of week 2, time will be spend on devising an algorithm to implement concurrent analysis of URLs. After that, most of our time will be spent implementing our algorithm. In week 4, the report will be written and the presentation will be prepared.
+A meeting with the supervisors is planned every Wednesday afternoon. Therefore in week 1, we set the deadline of the proposal on Wednesday so it can be reviewed by our supervisors and be changed accordingly to the feedback given. At the end of week 1 and the beginning of week 2, time will be spend on devising a method to implement concurrent analysis of URLs. After that, most of our time will be spent implementing our method. In week 4, the report will be written and the presentation will be prepared.
 
 \section{Expected results}
 
-At the end of the project we expect to have an algorithm that answers the research question and a proof of concept of this algorithm. This PoC will be implemented by adapting the Cuckoo Sandbox. By checking multiple URLs in one virtual machine instance, we want to make Cuckoo more useable for checking hundreds of URLs. Our goal is to increase the performance of Cuckoo tenfold by implementing our algorithm.
+At the end of the project we expect to have a method that answers the research question and a proof of concept of this method. This PoC will be implemented by adapting the Cuckoo Sandbox. By checking multiple URLs in one virtual machine instance, we want to make Cuckoo more useable for checking hundreds of URLs. Our goal is to increase the performance of Cuckoo tenfold by implementing our method.
 
 \section{Ethical issues}
 

@@ -63,7 +63,7 @@ The predecessor of NCSC-NL started in 2007 with the development of their own sys
 
 \section{Scope}
 
-The scope of this project consists of creating a method that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To prove that the method is something feasible, we will, when enough time is available, implement a proof of concept of the method.
+The scope of this project consists of creating a method that allows multiple URLs to be opened at the same time while still being able to track all further interaction, such as unexpected HTTP requests and other malicious activity, and link them to the original request/URL. To prove that the method is something feasible, we will also implement a proof of concept of the method.
 
 The goal during this research project is to make the method platform agnostic. If this is not possible then we will limit our self to Windows 7 with version 8 of the Internet Explorer browser.
 
@@ -75,7 +75,7 @@ To create a generic method, we need to have more information than the data we se
 
 Secondly, we investigate the possibilities of hooking into browsers and the operating system to be able to retrieve and get this extra information and couple it to the data sent and received on the network. It might be the case that network traffic can be intercepted before it leaves the actual NIC. This might be done on the application level or operating system level. Further investigation is necessary to see if this is feasible.
 
-Finally, we can define a generic method that allows us to trace activity to a certain URL. Once we have this generic method and if there is still enough time left, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo which is a dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
+Finally, we can define a generic method that allows us to trace activity to a certain URL. Once we have this generic method, we will implement this in a proof of concept. As to not start from scratch, we will use Cuckoo which is a dynamic malware analysis system that uses a virtual environment to run malware. Conveniently, Cuckoo already supports one URL as input and also provides dozens of hooks into the operating system. 
 
 \section{Planning}
 
